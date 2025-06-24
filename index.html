@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Warung Tuak</title>
-  <link rel="icon" href="g1.png" type="image/png">
-
+  <link rel="icon" href="g1.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+
   <header>
     <div class="container">
       <h1>Warung Tuak</h1>
@@ -67,7 +67,7 @@
       <h2>Sedak Yang Tersedia</h2>
       <div class="menu-items">
         <div class="menu-item">
-          <img src="g4.png" alt="Kacang Kedele" id="img4" />
+          <img src="g4.png" alt="Kacang Kedelai" id="img4" />
           <h3 id="nama4">Kacang Kedelai</h3>
           <p id="harga4">Rp 1.000</p>
           <button onclick="openForm('nama4','harga4')">Beli via WA</button>
@@ -91,9 +91,7 @@
   <section id="about">
     <div class="container">
       <h2>Tentang Kami</h2>
-      <p>
-        Nikmati minuman anda dengan santai tanpa masalah apapun. Jika sudah lewat jam 1 malam, dilarang ribut di sekitar warung.
-      </p>
+      <p>Nikmati minuman anda dengan santai tanpa masalah apapun. Jika sudah lewat jam 1 malam, dilarang ribut di sekitar warung.</p>
     </div>
   </section>
 
@@ -106,7 +104,7 @@
     </div>
   </section>
 
-  <!-- WhatsApp Button -->
+  <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/6281772857916" target="_blank" class="wa-float">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -117,11 +115,22 @@
       <span class="close" onclick="closeForm()">&times;</span>
       <h2>Form Pemesanan</h2>
       <p><strong>Produk:</strong> <span id="form-nama"></span></p>
-      <input type="text" id="form-user" placeholder="Nama Pemesan">
+
+      <input type="text" id="form-user" placeholder="Nama Pemesan" />
+      <input type="number" id="form-jumlah" placeholder="Jumlah pembelian" min="1" />
       <textarea id="form-alamat" placeholder="Alamat lengkap..."></textarea>
+
       <button onclick="getLocation()">📍 Gunakan Lokasi Saya</button>
       <p id="lokasi-link" style="color: green; font-size: 0.9rem;"></p>
-      <button onclick="submitToWA()">Kirim ke WhatsApp Pesana Anda</button>
+
+      <div class="payment-method">
+        <label><strong>Metode Pembayaran:</strong></label><br />
+        <label><input type="radio" name="metode" value="COD"> Bayar di Tempat (COD)</label><br />
+        <label><input type="radio" name="metode" value="OVO"> Transfer via OVO</label><br />
+        <label><input type="radio" name="metode" value="GOPAY"> Transfer via GoPay</label>
+      </div>
+
+      <button onclick="submitToWA()">Kirim ke WhatsApp Pesanan Anda</button>
     </div>
   </div>
 
@@ -131,6 +140,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script>
     let currentData = {}, currentMapLink = "";
 
@@ -148,7 +158,9 @@
       document.getElementById("form-nama").innerText = nama;
       document.getElementById("form-user").value = "";
       document.getElementById("form-alamat").value = "";
+      document.getElementById("form-jumlah").value = 1;
       document.getElementById("lokasi-link").innerText = "";
+      document.querySelectorAll('input[name="metode"]').forEach(el => el.checked = false);
 
       document.getElementById("modalForm").style.display = "block";
     }
@@ -175,31 +187,45 @@
     }
 
     function submitToWA() {
-      const user = document.getElementById("form-user").value.trim();
-      const alamat = document.getElementById("form-alamat").value.trim();
-
-      if (!user || !alamat) {
-        alert("Nama dan alamat wajib diisi!");
-        return;
-      }
-
-      const noWA = "6281772857916";
-
-      const pesan =
-`*📦 PESANAN BARU*
+  const user = document.getElementById("form-user").value.trim();
+  const alamat = document.getElementById("form-alamat").value.trim();
+  const jumlah = parseInt(document.getElementById("form-jumlah").value.trim());
+  const metode = document.querySelector('input[name="metode"]:checked')?.value || "";
+  
+  if (!user || !alamat || !jumlah || !metode) {
+    alert("Mohon lengkapi semua data terlebih dahulu!");
+    return;
+  }
+  
+  // Ambil harga & hitung total
+  const hargaText = currentData.harga.replace(/[^\d]/g, '');
+  const hargaAngka = parseInt(hargaText);
+  const total = hargaAngka * jumlah;
+  const totalRp = "Rp " + total.toLocaleString("id-ID");
+  
+  let transferNote = "";
+  if (metode === "OVO" || metode === "GOPAY") {
+    transferNote = `📱 *Silakan transfer ke:* 6281772857916 a.n. Warung Tuak\n📝 Mohon konfirmasi setelah transfer dilakukan.\n`;
+  }
+  
+  const pesan =
+    `*📦 PESANAN BARU*
 
 🍹 *Produk:* ${currentData.nama}
-💰 *Harga:* ${currentData.harga}
+💰 *Harga Satuan:* ${currentData.harga}
+🔢 *Jumlah:* ${jumlah}
+💵 *Total Bayar:* ${totalRp}
 
 👤 *Nama:* ${user}
 📍 *Alamat:* ${alamat}
-${currentMapLink ? "🌐 *Link Lokasi:* " + currentMapLink : ""}
-
-Terima kasih, mohon diproses 🙏`;
-
-      window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`, "_blank");
-      closeForm();
-    }
+${currentMapLink ? "🌐 *Link Lokasi:* " + currentMapLink + "\n" : ""}
+💳 *Metode Pembayaran:* ${metode}
+${transferNote}
+🙏 Terima kasih, mohon diproses ya.`;
+  
+  window.open(`https://wa.me/6281772857916?text=${encodeURIComponent(pesan)}`, "_blank");
+  closeForm();
+}
   </script>
 </body>
 </html>

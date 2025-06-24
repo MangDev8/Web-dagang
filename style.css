@@ -382,3 +382,79 @@ footer {
         transform: translateY(0);
     }
 }
+
+
+/* Metode Pembayaran */
+.payment-method {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.payment-method label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.payment-method input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #25D366;
+}
+
+.payment-method-label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Input Jumlah */
+.modal-content input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.modal-content input[type="number"]::-webkit-outer-spin-button,
+.modal-content input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Responsive for Modal Form */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .modal-content input,
+    .modal-content textarea {
+        font-size: 0.95rem;
+    }
+    
+    .modal-content button {
+        font-size: 0.95rem;
+    }
+    
+    .payment-method label {
+        font-size: 0.95rem;
+    }
+}
+
+.payment-info {
+    display: none;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+input[value="OVO"]:checked~#ovo-info,
+input[value="GOPAY"]:checked~#gopay-info {
+    display: inline;
+}
