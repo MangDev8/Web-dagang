@@ -8,7 +8,6 @@
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
 </head>
 <body>
   <header>
@@ -45,19 +44,19 @@
           <img src="g1.png" alt="Tuak" id="img1" />
           <h3 id="nama1">Tuak</h3>
           <p id="harga1">Rp 7.000</p>
-          <button onclick="beliViaWA('img1', 'nama1', 'harga1')">Beli via WA</button>
+          <button onclick="openForm('nama1','harga1')">Beli via WA</button>
         </div>
         <div class="menu-item">
           <img src="g1.png" alt="Brem Putih" id="img2" />
           <h3 id="nama2">Brem Putih</h3>
           <p id="harga2">Rp 16.000</p>
-          <button onclick="beliViaWA('img2', 'nama2', 'harga2')">Beli via WA</button>
+          <button onclick="openForm('nama2','harga2')">Beli via WA</button>
         </div>
         <div class="menu-item">
           <img src="g1.png" alt="Kopi Ireng" id="img3" />
           <h3 id="nama3">Kopi Ireng</h3>
           <p id="harga3">Rp 5.000</p>
-          <button onclick="beliViaWA('img3', 'nama3', 'harga3')">Beli via WA</button>
+          <button onclick="openForm('nama3','harga3')">Beli via WA</button>
         </div>
       </div>
     </div>
@@ -69,21 +68,21 @@
       <div class="menu-items">
         <div class="menu-item">
           <img src="g4.png" alt="Kacang Kedele" id="img4" />
-          <h3 id="nama4">Kacang Kedele</h3>
+          <h3 id="nama4">Kacang Kedelai</h3>
           <p id="harga4">Rp 1.000</p>
-          <button onclick="beliViaWA('img4', 'nama4', 'harga4')">Beli via WA</button>
+          <button onclick="openForm('nama4','harga4')">Beli via WA</button>
         </div>
         <div class="menu-item">
           <img src="g5.png" alt="Kerupuk" id="img5" />
           <h3 id="nama5">Kerupuk</h3>
           <p id="harga5">Rp 1.000</p>
-          <button onclick="beliViaWA('img5', 'nama5', 'harga5')">Beli via WA</button>
+          <button onclick="openForm('nama5','harga5')">Beli via WA</button>
         </div>
         <div class="menu-item">
           <img src="g3.png" alt="Kacang Ijo" id="img6" />
           <h3 id="nama6">Kacang Ijo</h3>
           <p id="harga6">Rp 1.000</p>
-          <button onclick="beliViaWA('img6', 'nama6', 'harga6')">Beli via WA</button>
+          <button onclick="openForm('nama6','harga6')">Beli via WA</button>
         </div>
       </div>
     </div>
@@ -93,8 +92,7 @@
     <div class="container">
       <h2>Tentang Kami</h2>
       <p>
-        Nikmati minuman anda dengan santai tanpa masalah apapun, mau itu membuat rusuh atau hal apapun jika sudah
-        waktunya atau jam di atas jam 1 malam maka tidak boleh ribut.
+        Nikmati minuman anda dengan santai tanpa masalah apapun. Jika sudah lewat jam 1 malam, dilarang ribut di sekitar warung.
       </p>
     </div>
   </section>
@@ -104,13 +102,28 @@
       <h2>Kontak Kami</h2>
       <p>Email: belum tersedia</p>
       <p>Telepon: 081772857916</p>
-      <p>Alamat: gang Biduri di depan BTN Gunung Sari Mudi Swalayan.</p>
+      <p>Alamat: Gang Biduri, depan BTN Gunung Sari Mudi Swalayan.</p>
     </div>
   </section>
 
+  <!-- WhatsApp Button -->
   <a href="https://wa.me/6281772857916" target="_blank" class="wa-float">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Modal Form -->
+  <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeForm()">&times;</span>
+      <h2>Form Pemesanan</h2>
+      <p><strong>Produk:</strong> <span id="form-nama"></span></p>
+      <input type="text" id="form-user" placeholder="Nama Pemesan">
+      <textarea id="form-alamat" placeholder="Alamat lengkap..."></textarea>
+      <button onclick="getLocation()">📍 Gunakan Lokasi Saya</button>
+      <p id="lokasi-link" style="color: green; font-size: 0.9rem;"></p>
+      <button onclick="submitToWA()">Kirim ke WhatsApp Pesana Anda</button>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -119,26 +132,73 @@
   </footer>
 
   <script>
+    let currentData = {}, currentMapLink = "";
+
     function toggleMenu() {
       document.querySelector('.menu').classList.toggle('active');
     }
 
-    function beliViaWA(imgId, namaId, hargaId) {
-      const noWA = "6281772857916"; // Ganti dengan nomor kamu
-
+    function openForm(namaId, hargaId) {
       const nama = document.getElementById(namaId).innerText;
       const harga = document.getElementById(hargaId).innerText;
-      const img = document.getElementById(imgId).getAttribute("src");
-     
-      const pesan =
-        `Halo Warung Tuak!%0A%0ASaya ingin memesan:%0A` +
-        `✨ *Nama:* ${nama}%0A` +
-        `💰 *Harga:* ${harga}%0A` +
-      
-        `Mohon info ketersediaan barang nya ya. Terima kasih!`;
 
-      const link = `https://wa.me/${noWA}?text=${pesan}`;
-      window.open(link, "_blank");
+      currentData = { nama, harga };
+      currentMapLink = "";
+
+      document.getElementById("form-nama").innerText = nama;
+      document.getElementById("form-user").value = "";
+      document.getElementById("form-alamat").value = "";
+      document.getElementById("lokasi-link").innerText = "";
+
+      document.getElementById("modalForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("modalForm").style.display = "none";
+    }
+
+    function getLocation() {
+      if (!navigator.geolocation) {
+        alert("Browser tidak mendukung GPS.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          currentMapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+          document.getElementById("lokasi-link").innerText = "📍 Lokasi berhasil ditambahkan.";
+        },
+        () => alert("Gagal ambil lokasi. Pastikan GPS aktif.")
+      );
+    }
+
+    function submitToWA() {
+      const user = document.getElementById("form-user").value.trim();
+      const alamat = document.getElementById("form-alamat").value.trim();
+
+      if (!user || !alamat) {
+        alert("Nama dan alamat wajib diisi!");
+        return;
+      }
+
+      const noWA = "6281772857916";
+
+      const pesan =
+`*📦 PESANAN BARU*
+
+🍹 *Produk:* ${currentData.nama}
+💰 *Harga:* ${currentData.harga}
+
+👤 *Nama:* ${user}
+📍 *Alamat:* ${alamat}
+${currentMapLink ? "🌐 *Link Lokasi:* " + currentMapLink : ""}
+
+Terima kasih, mohon diproses 🙏`;
+
+      window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`, "_blank");
+      closeForm();
     }
   </script>
 </body>
