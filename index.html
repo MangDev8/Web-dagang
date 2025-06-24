@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warung Tuak</title>
+  <link rel="icon" href="g1.png" type="image/png">
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Warung Tuak</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h2>Selamat Datang di Warung Tuak</h2>
+      <p>Menikmati minuman dengan santai dan juga bijak.</p>
+      <a href="#menu" class="cta-btn">Lihat Menu</a>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="container">
+      <h2>Menu Unggulan</h2>
+      <div class="menu-items">
+        <div class="menu-item">
+          <img src="g1.png" alt="Tuak" id="img1" />
+          <h3 id="nama1">Tuak</h3>
+          <p id="harga1">Rp 7.000</p>
+          <button onclick="beliViaWA('img1', 'nama1', 'harga1')">Beli via WA</button>
+        </div>
+        <div class="menu-item">
+          <img src="g1.png" alt="Brem Putih" id="img2" />
+          <h3 id="nama2">Brem Putih</h3>
+          <p id="harga2">Rp 16.000</p>
+          <button onclick="beliViaWA('img2', 'nama2', 'harga2')">Beli via WA</button>
+        </div>
+        <div class="menu-item">
+          <img src="g1.png" alt="Kopi Ireng" id="img3" />
+          <h3 id="nama3">Kopi Ireng</h3>
+          <p id="harga3">Rp 5.000</p>
+          <button onclick="beliViaWA('img3', 'nama3', 'harga3')">Beli via WA</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="container">
+      <h2>Sedak Yang Tersedia</h2>
+      <div class="menu-items">
+        <div class="menu-item">
+          <img src="g4.png" alt="Kacang Kedele" id="img4" />
+          <h3 id="nama4">Kacang Kedele</h3>
+          <p id="harga4">Rp 1.000</p>
+          <button onclick="beliViaWA('img4', 'nama4', 'harga4')">Beli via WA</button>
+        </div>
+        <div class="menu-item">
+          <img src="g5.png" alt="Kerupuk" id="img5" />
+          <h3 id="nama5">Kerupuk</h3>
+          <p id="harga5">Rp 1.000</p>
+          <button onclick="beliViaWA('img5', 'nama5', 'harga5')">Beli via WA</button>
+        </div>
+        <div class="menu-item">
+          <img src="g3.png" alt="Kacang Ijo" id="img6" />
+          <h3 id="nama6">Kacang Ijo</h3>
+          <p id="harga6">Rp 1.000</p>
+          <button onclick="beliViaWA('img6', 'nama6', 'harga6')">Beli via WA</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>Tentang Kami</h2>
+      <p>
+        Nikmati minuman anda dengan santai tanpa masalah apapun, mau itu membuat rusuh atau hal apapun jika sudah
+        waktunya atau jam di atas jam 1 malam maka tidak boleh ribut.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Kontak Kami</h2>
+      <p>Email: belum tersedia</p>
+      <p>Telepon: 081772857916</p>
+      <p>Alamat: gang Biduri di depan BTN Gunung Sari Mudi Swalayan.</p>
+    </div>
+  </section>
+
+  <a href="https://wa.me/6281772857916" target="_blank" class="wa-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Warung Tuak dan Kopi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('active');
+    }
+
+    function beliViaWA(imgId, namaId, hargaId) {
+      const noWA = "6281772857916"; // Ganti dengan nomor kamu
+
+      const nama = document.getElementById(namaId).innerText;
+      const harga = document.getElementById(hargaId).innerText;
+      const img = document.getElementById(imgId).getAttribute("src");
+     
+      const pesan =
+        `Halo Warung Tuak!%0A%0ASaya ingin memesan:%0A` +
+        `🍺 *Nama:* ${nama}%0A` +
+        `💰 *Harga:* ${harga}%0A` +
+      
+        `Mohon info ketersediaannya ya. Terima kasih!`;
+
+      const link = `https://wa.me/${noWA}?text=${pesan}`;
+      window.open(link, "_blank");
+    }
+  </script>
+</body>
+</html>
