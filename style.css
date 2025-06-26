@@ -1,460 +1,431 @@
-/* Reset default styles */
+/* ========== RESET ========== */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body & Typography */
+/* ========== BODY & TEXT ========== */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
+/* ========== HEADER ========== */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
 }
 
 header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 header h1 {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 nav {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 nav .menu {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 
 nav .menu li {
-    margin-left: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 nav .menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 nav .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    margin-left: 1.5rem;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 1.5rem;
 }
 
 nav .hamburger .bar {
-    width: 25px;
-    height: 3px;
-    margin: 4px 0;
-    background-color: #fff;
-    transition: 0.3s;
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  background-color: #fff;
+  transition: 0.3s;
 }
 
-/* Hero Section */
+/* ========== HERO SECTION ========== */
 #hero {
-    background: url('g1.png') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 5rem 0;
+  background: url('g1.png') no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 5rem 1rem;
 }
 
 #hero .hero-content {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 #hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .cta-btn {
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-radius: 5px;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  display: inline-block;
 }
 
 .cta-btn:hover {
-    background-color: #c0392b;
+  background-color: #c0392b;
 }
 
-/* Menu Section */
-#menu {
-    background-color: #fff;
-    padding: 3rem 0;
-}
-
-#menu h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.menu-items {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.menu-item {
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 30%;
-}
-
-.menu-item img {
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-}
-
-.menu-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.menu-item p {
-    font-size: 1.2rem;
-    color: #e74c3c;
-}
-
-.menu-item button {
-    margin-top: 8px;
-    padding: 8px 12px;
-    background: #25D366;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.menu-item button:hover {
-    background-color: #1ebe5b;
-}
-
-/* About Section */
+/* ========== ABOUT ========== */
 #about {
-    background-color: #ecf0f1;
-    padding: 3rem 0;
-    text-align: center;
+  background-color: #ecf0f1;
+  padding: 3rem 1rem;
+  text-align: center;
 }
 
 #about h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 #about p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.produk1 {
+  text-align: center;
+  margin: 10px;
 }
 
-/* Contact Section */
+/* ========== CONTACT ========== */
 #contact {
-    background-color: #fff;
-    padding: 3rem 0;
-    text-align: center;
+  background-color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
 }
 
 #contact h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 #contact p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
 }
 
-/* WhatsApp Floating Button */
+/* ========== WHATSAPP BUTTON ========== */
 .wa-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    border-radius: 50%;
-    padding: 14px 16px;
-    font-size: 24px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  padding: 14px;
+  font-size: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
 .wa-float:hover {
-    background-color: #03702b;
+  background-color: #03702b;
 }
 
-/* Responsive Design */
+/* ========== RESPONSIVE HEADER NAV ========== */
 @media (max-width: 768px) {
-    nav .menu {
-        display: none;
-        width: 100%;
-        flex-direction: column-reverse;
-        background-color: #333;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        padding: 1rem 0;
-    }
+  nav .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 70px;
+    left: 0;
+  }
 
-    nav .menu.active {
-        display: flex;
-    }
+  nav .menu.active {
+    display: flex;
+  }
 
-    nav .menu li {
-        text-align: center;
-        margin: 0;
-    }
+  nav .menu li {
+    text-align: center;
+    margin: 0;
+  }
 
-    nav .menu li a {
-        padding: 1rem;
-        display: block;
-        color: #fff;
-    }
+  nav .menu li a {
+    padding: 1rem;
+    display: block;
+  }
 
-    nav .hamburger {
-        display: flex;
-    }
+  nav .hamburger {
+    display: flex;
+  }
 
-    nav .hamburger.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
+  nav .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
 
-    nav .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
+  nav .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-    nav .hamburger.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
+  nav .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(11px, -10px);
+  }
 
-    .menu-item {
-        width: 90%;
-    }
-
-    .wa-float {
-        padding: 12px;
-        font-size: 20px;
-        bottom: 15px;
-        right: 15px;
-    }
+  .wa-float {
+    bottom: 15px;
+    right: 15px;
+    font-size: 20px;
+    padding: 12px;
+  }
 }
 
+/* ========== PRODUK SECTION ala SHOPEE ========== */
+#produk-shopee {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background: #fff;
+}
 
-/* ===== Modal Form Pemesanan ===== */
+.produk-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  
+}
+
+.produk-item:hover {
+  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.produk-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.produk-info {
+  padding: 10px;
+}
+
+.produk-info .badge {
+  font-size: 0.7rem;
+  color: #e67e22;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.produk-info h3 {
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: #333;
+}
+
+.produk-info .harga {
+  font-size: 1rem;
+  color: #e74c3c;
+}
+
+.produk-info .harga .diskon {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-left: 5px;
+}
+
+.produk-info .terjual {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  #produk-shopee {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========== MODAL ========== */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(3px);
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(3px);
+  overflow: auto;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-content h2 {
-    margin-bottom: 1rem;
-    font-size: 1.6rem;
-    color: #333;
-    text-align: center;
-}
-
-.modal-content p {
-    margin-bottom: 0.6rem;
-    font-weight: bold;
-    color: #555;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
 }
 
 .modal-content input,
 .modal-content textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: #fefefe;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .modal-content button {
-    padding: 10px 16px;
-    background-color: #25D366;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 5px;
+  background: #25D366;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .modal-content button:hover {
-    background-color: #1ebe5b;
-}
-
-.modal-content #lokasi-link {
-    font-size: 0.9rem;
-    color: green;
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 16px;
-    font-size: 24px;
-    color: #555;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.close:hover {
-    color: #000;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  background: #1ebe5b;
 }
 
 
-/* Metode Pembayaran */
-.payment-method {
-    margin-top: 10px;
-    margin-bottom: 15px;
-    text-align: left;
+.detail-produk {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 9999;
+  overflow-y: auto;
 }
 
-.payment-method label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 1rem;
-    color: #333;
-    cursor: pointer;
+.detail-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem;
 }
 
-.payment-method input[type="radio"] {
-    margin-right: 8px;
-    accent-color: #25D366;
+.detail-container img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-.payment-method-label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
+.detail-info {
+  text-align: center;
+  margin-top: 1rem;
 }
 
-/* Input Jumlah */
-.modal-content input[type="number"] {
-    -moz-appearance: textfield;
+.detail-harga {
+  font-size: 1.4rem;
+  color: #e74c3c;
+  margin: 0.5rem 0;
 }
 
-.modal-content input[type="number"]::-webkit-outer-spin-button,
-.modal-content input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.detail-button {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-/* Responsive for Modal Form */
-@media (max-width: 480px) {
-    .modal-content {
-        padding: 1.5rem;
-    }
-    
-    .modal-content h2 {
-        font-size: 1.4rem;
-    }
-    
-    .modal-content input,
-    .modal-content textarea {
-        font-size: 0.95rem;
-    }
-    
-    .modal-content button {
-        font-size: 0.95rem;
-    }
-    
-    .payment-method label {
-        font-size: 0.95rem;
-    }
+.detail-close {
+  border: none;
+  padding: 8px 12px;
+  font-size: 38px;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: #fff;
 }
 
-.payment-info {
-    display: none;
-    font-size: 0.9rem;
-    color: #555;
-    font-style: italic;
-    margin-left: 5px;
+.detail-close, .close {
+  position: fixed;
+  left: 10;
+  cursor: pointer;
+  margin-top: 20px;
+  decoration: none;
 }
 
-input[value="OVO"]:checked~#ovo-info,
-input[value="GOPAY"]:checked~#gopay-info {
-    display: inline;
+.detail-close i .close i  {
+  pointer-events: none;
+
+}
+
+.detail-close i:hover{
+  color: #0FAEF9;
 }

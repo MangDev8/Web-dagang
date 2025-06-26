@@ -7,16 +7,17 @@
   <link rel="icon" href="g1.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
-
+  <!-- Header -->
   <header>
     <div class="container">
       <h1>Warung Tuak</h1>
       <nav>
         <ul class="menu">
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#produk">Produk</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
         <div class="hamburger" onclick="toggleMenu()">
@@ -28,66 +29,154 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section id="hero">
     <div class="hero-content">
       <h2>Selamat Datang di Warung Tuak</h2>
       <p>Menikmati minuman dengan santai dan juga bijak.</p>
-      <a href="#menu" class="cta-btn">Lihat Menu</a>
+      <a href="#produk-shopee" class="cta-btn">Lihat Produk</a>
     </div>
   </section>
 
-  <section id="menu">
-    <div class="container">
-      <h2>Menu Unggulan</h2>
-      <div class="menu-items">
-        <div class="menu-item">
-          <img src="g1.png" alt="Tuak" id="img1" />
-          <h3 id="nama1">Tuak</h3>
-          <p id="harga1">Rp 7.000</p>
-          <button onclick="openForm('nama1','harga1')">Beli via WA</button>
-        </div>
-        <div class="menu-item">
-          <img src="g1.png" alt="Brem Putih" id="img2" />
-          <h3 id="nama2">Brem Putih</h3>
-          <p id="harga2">Rp 16.000</p>
-          <button onclick="openForm('nama2','harga2')">Beli via WA</button>
-        </div>
-        <div class="menu-item">
-          <img src="g1.png" alt="Kopi Ireng" id="img3" />
-          <h3 id="nama3">Kopi Ireng</h3>
-          <p id="harga3">Rp 5.000</p>
-          <button onclick="openForm('nama3','harga3')">Beli via WA</button>
-        </div>
+  <!-- Produk Shopee Style -->
+  <div class="produk1">
+    <h2>Produk Unggul</h2>
+  </div>
+  <section id="produk-shopee">
+    <div class="produk-item" onclick="tampilkanDetailProduk('Tuak', 'Rp7.000', 'g1.png', 'Tuak pak ngah paling enak dong mari beli.')">
+      <img src="g1.png" alt="tuak" />
+      <div class="produk-info">
+        <div class="badge"><i class="fas fa-fire"></i> Terlaris</div>
+        <h3>Tuak</h3>
+        <p class="harga">Rp7.000 <span class="diskon">-21%</span></p>
+        <p class="terjual">10rb+ terjual</p>
+      </div>
+    </div>
+
+    <div class="produk-item" onclick="tampilkanDetailProduk('Brem Putih', 'Rp16.000', 'g1.png', 'Brem pak ngah paling enak dong mari beli.')">
+      <img src="g1.png" alt="" />
+      <div class="produk-info">
+        <div class="badge"><i class="fas fa-fire"></i> Terlaris</div>
+        <h3>Berem</h3>
+        <p class="harga">Rp16.000 <span class="diskon">-21%</span></p>
+        <p class="terjual">10rb+ terjual</p>
+      </div>
+    </div>
+
+    <div class="produk-item" onclick="tampilkanDetailProduk('Air Panas 100°', 'Rp16.000', 'g1.png', 'Brem pak ngah paling enak dong mari beli.')">
+      <img src="g1.png" alt="" />
+      <div class="produk-info">
+        <div class="badge"><i class="fas fa-fire"></i> Terlaris</div>
+        <h3>Air Panas 100°😵‍💫</h3>
+        <p class="harga">Rp1.000 <span class="diskon">-21%</span></p>
+        <p class="terjual">-100 terjual</p>
+      </div>
+    </div>
+    
+        <div class="produk-item" onclick="tampilkanDetailProduk('Kopi Ireng', 'Rp3.000', 'g1.png', 'Kopi pak ngah paling enak dong mari beli.')">
+      <img src="g1.png" alt="" />
+      <div class="produk-info">
+        <div class="badge"><i class="fas fa-fire"></i> Paling Pait bolo</div>
+        <h3>Kopi Ireng</h3>
+        <p class="harga">Rp3.000 <span class="diskon">Pait 100% Dijamin mabok</span></p>
+        <p class="terjual">0- terjual</p>
       </div>
     </div>
   </section>
+  
+    <div class="produk1">
+    <h2>Produk Cemilan</h2>
+  </div>
+  <section id="produk-shopee">
+        <div class="produk-item" onclick="tampilkanDetailProduk('Kacang Ijo', 'Rp1.000', 'g3.png', 'yummy ')">
+          <img src="g3.png" alt="" />
+          <div class="produk-info">
+            <div class="badge"><i class="fas fa-fire"></i> Paling enak</div>
+            <h3>Kacang Ijo</h3>
+            <p class="harga">Rp3.000 <span class="diskon">nikmat nya 100% </span></p>
+            <p class="terjual">12+ terjual</p>
+          </div>
+        </div>
+        
+              <div class="produk-item" onclick="tampilkanDetailProduk('Kacang kedele', 'Rp1.000', 'g4.png', 'yummy ')">
+          <img src="g4.png" alt="" />
+          <div class="produk-info">
+            <div class="badge"><i class="fas fa-fire"></i> Paling enak</div>
+            <h3>Kacang kedele</h3>
+            <p class="harga">Rp1.000 <span class="diskon">nikmat nya 100% </span></p>
+            <p class="terjual">12+ terjual</p>
+          </div>
+        </div>
+                <div class="produk-item" onclick="tampilkanDetailProduk('Krupuk Jaje', 'Rp1.000', 'g5.png', 'yummy ')">
+          <img src="g5.png" alt="" />
+          <div class="produk-info">
+            <div class="badge"><i class="fas fa-fire"></i> Paling enak</div>
+            <h3>Krupuk Jaje</h3>
+            <p class="harga">Rp3.000 <span class="diskon">nikmat nya 100% </span></p>
+            <p class="terjual">12+ terjual</p>
+          </div>
+        </div>
+  </section>
+  
+  
+  
+  <div class="produk1">
+    <h2>Produk Elektronik</h2>
+  </div>
+  <section id="produk-shopee">
+     <div class="produk-item" onclick="tampilkanDetailProduk('Motor DC 775 12V', 'Rp39.000', 'g1.png', 'Motor DC high speed dengan torsi besar cocok untuk buat DYI seperti bor grinda dan lainya.')">
+   <img src="g1.png" alt="Motor DC" />
+   <div class="produk-info">
+     <div class="badge"><i class="fas fa-fire"></i> Terlaris</div>
+     <h3>Motor DC 775 12v high speed torsi besar</h3>
+     <p class="harga">Rp39.000 <span class="diskon">-21%</span></p>
+     <p class="terjual">10rb+ terjual</p>
+   </div>
+ </div>
+  </section>
+  <!-- Modal Detail Produk Fullscreen -->
+  <div id="detailProdukPage" class="detail-produk">
+    <div class="detail-container">
+      <!-- Tombol close -->
+     <div class="detail-close" onclick="tutupDetailProduk()">
+  <i class="fas fa-arrow-left"></i>
+</div>
 
-  <section id="menu">
-    <div class="container">
-      <h2>Sedak Yang Tersedia</h2>
-      <div class="menu-items">
-        <div class="menu-item">
-          <img src="g4.png" alt="Kacang Kedelai" id="img4" />
-          <h3 id="nama4">Kacang Kedelai</h3>
-          <p id="harga4">Rp 1.000</p>
-          <button onclick="openForm('nama4','harga4')">Beli via WA</button>
+      <img id="detail-gambar" src="" alt="Produk">
+      <div class="detail-info">
+        <h2 id="detail-nama">Nama Produk</h2>
+        <div class="detail-harga">
+          <span id="detail-harga">Rp0</span>
         </div>
-        <div class="menu-item">
-          <img src="g5.png" alt="Kerupuk" id="img5" />
-          <h3 id="nama5">Kerupuk</h3>
-          <p id="harga5">Rp 1.000</p>
-          <button onclick="openForm('nama5','harga5')">Beli via WA</button>
-        </div>
-        <div class="menu-item">
-          <img src="g3.png" alt="Kacang Ijo" id="img6" />
-          <h3 id="nama6">Kacang Ijo</h3>
-          <p id="harga6">Rp 1.000</p>
-          <button onclick="openForm('nama6','harga6')">Beli via WA</button>
-        </div>
+        <p id="detail-deskripsi">Deskripsi produk akan tampil di sini.</p>
+        <a id="detail-wa" href="#" target="_blank" class="detail-button">Chat via WhatsApp</a>
+        <button onclick="openOrderFromDetail()" class="detail-button">Beli Sekarang</button>
       </div>
     </div>
-  </section>
+  </div>
 
+  <!-- Modal Form Pemesanan -->
+  <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeForm()">&times;</span>
+      <h2>Form Pemesanan</h2>
+      <p><strong>Produk:</strong> <span id="form-nama"></span></p>
+      <input type="text" id="form-user" placeholder="Nama Pemesan" />
+      <input type="number" id="form-jumlah" placeholder="Jumlah pembelian" min="1" />
+      <textarea id="form-alamat" placeholder="Alamat lengkap..."></textarea>
+      <button onclick="getLocation()">📍 Gunakan Lokasi Saya</button>
+      <p id="lokasi-link"></p>
+      <div class="payment-method">
+        <label><strong>Metode Pembayaran:</strong></label>
+        <label><input type="radio" name="metode" value="COD"> Bayar di Tempat</label>
+        <label><input type="radio" name="metode" value="OVO"> Transfer via OVO</label>
+        <label><input type="radio" name="metode" value="GOPAY"> Transfer via GoPay</label>
+      </div>
+      <button onclick="submitToWA()">Kirim Pesanan ke WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>Tentang Kami</h2>
@@ -95,45 +184,22 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2>Kontak Kami</h2>
       <p>Email: belum tersedia</p>
       <p>Telepon: 081772857916</p>
-      <p>Alamat: Gang Biduri, depan BTN Gunung Sari Mudi Swalayan!.</p>
+      <p>Alamat: Gang Biduri, depan BTN Gunung Sari Mudi Swalayan.</p>
     </div>
   </section>
 
-  <!-- WhatsApp Floating Button -->
+  <!-- WhatsApp Floating -->
   <a href="https://wa.me/6281772857916" target="_blank" class="wa-float">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Modal Form -->
-  <div id="modalForm" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeForm()">&times;</span>
-      <h2>Form Pemesanan</h2>
-      <p><strong>Produk:</strong> <span id="form-nama"></span></p>
-
-      <input type="text" id="form-user" placeholder="Nama Pemesan" />
-      <input type="number" id="form-jumlah" placeholder="Jumlah pembelian" min="1" />
-      <textarea id="form-alamat" placeholder="Alamat lengkap..."></textarea>
-
-      <button onclick="getLocation()">📍 Gunakan Lokasi Saya</button>
-      <p id="lokasi-link" style="color: green; font-size: 0.9rem;"></p>
-
-      <div class="payment-method">
-        <label><strong>Metode Pembayaran:</strong></label><br />
-        <label><input type="radio" name="metode" value="COD"> Bayar di Tempat (COD)</label><br />
-        <label><input type="radio" name="metode" value="OVO"> Transfer via OVO</label><br />
-        <label><input type="radio" name="metode" value="GOPAY"> Transfer via GoPay</label>
-      </div>
-
-      <button onclick="submitToWA()">Kirim ke WhatsApp Pesanan Anda</button>
-    </div>
-  </div>
-
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Warung Tuak dan Kopi. All rights reserved.</p>
@@ -141,91 +207,12 @@
   </footer>
 
   <!-- JavaScript -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
-    let currentData = {}, currentMapLink = "";
-
-    function toggleMenu() {
-      document.querySelector('.menu').classList.toggle('active');
-    }
-
-    function openForm(namaId, hargaId) {
-      const nama = document.getElementById(namaId).innerText;
-      const harga = document.getElementById(hargaId).innerText;
-
-      currentData = { nama, harga };
-      currentMapLink = "";
-
-      document.getElementById("form-nama").innerText = nama;
-      document.getElementById("form-user").value = "";
-      document.getElementById("form-alamat").value = "";
-      document.getElementById("form-jumlah").value = 1;
-      document.getElementById("lokasi-link").innerText = "";
-      document.querySelectorAll('input[name="metode"]').forEach(el => el.checked = false);
-
-      document.getElementById("modalForm").style.display = "block";
-    }
-
-    function closeForm() {
-      document.getElementById("modalForm").style.display = "none";
-    }
-
-    function getLocation() {
-      if (!navigator.geolocation) {
-        alert("Browser tidak mendukung GPS.");
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = pos.coords.latitude;
-          const lon = pos.coords.longitude;
-          currentMapLink = `https://www.google.com/maps?q=${lat},${lon}`;
-          document.getElementById("lokasi-link").innerText = "📍 Lokasi berhasil ditambahkan.";
-        },
-        () => alert("Gagal ambil lokasi. Pastikan GPS aktif.")
-      );
-    }
-
-    function submitToWA() {
-  const user = document.getElementById("form-user").value.trim();
-  const alamat = document.getElementById("form-alamat").value.trim();
-  const jumlah = parseInt(document.getElementById("form-jumlah").value.trim());
-  const metode = document.querySelector('input[name="metode"]:checked')?.value || "";
-  
-  if (!user || !alamat || !jumlah || !metode) {
-    alert("Mohon lengkapi semua data terlebih dahulu!");
-    return;
-  }
-  
-  // Ambil harga & hitung total
-  const hargaText = currentData.harga.replace(/[^\d]/g, '');
-  const hargaAngka = parseInt(hargaText);
-  const total = hargaAngka * jumlah;
-  const totalRp = "Rp " + total.toLocaleString("id-ID");
-  
-  let transferNote = "";
-  if (metode === "OVO" || metode === "GOPAY") {
-    transferNote = `📱 *Silakan transfer ke:* 6281772857916 a.n. Warung Tuak\n📝 Mohon konfirmasi setelah transfer dilakukan.\n`;
-  }
-  
-  const pesan =
-    `*📦 PESANAN BARU*
-
-🍹 *Produk:* ${currentData.nama}
-💰 *Harga Satuan:* ${currentData.harga}
-🔢 *Jumlah:* ${jumlah}
-💵 *Total Bayar:* ${totalRp}
-
-👤 *Nama:* ${user}
-📍 *Alamat:* ${alamat}
-${currentMapLink ? "🌐 *Link Lokasi:* " + currentMapLink + "\n" : ""}
-💳 *Metode Pembayaran:* ${metode}
-${transferNote}
-🙏 Terima kasih, mohon diproses ya.`;
-  
-  window.open(`https://wa.me/6281772857916?text=${encodeURIComponent(pesan)}`, "_blank");
-  closeForm();
-}
+    new Swiper(".swiper-container", {
+      pagination: { el: ".swiper-pagination" },
+    });
   </script>
 </body>
 </html>
