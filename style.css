@@ -15,6 +15,12 @@ body {
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden; /* Penting untuk mencegah scroll horizontal saat menu off-screen */
+}
+
+/* CSS untuk mencegah body scroll saat menu terbuka */
+body.no-scroll {
+  overflow: hidden;
 }
 
 /* ========== HEADER ========== */
@@ -22,6 +28,12 @@ header {
   background-color: #333;
   color: #fff;
   padding: 1rem 0;
+  position: fixed; /* Jadikan header fixed jika kamu ingin menunya muncul di bawah header */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Pastikan header di atas konten */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header .container {
@@ -29,20 +41,28 @@ header .container {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  height: 50px; /* Atur tinggi header jika fixed */
 }
 
 header h1 {
   font-size: 1.8rem;
 }
 
-nav {
-  display: flex;
+header h1 .logo { /* Styling untuk logo di dalam h1 */
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Desktop Navigation - Pastikan tetap flex untuk desktop */
+nav .menu {
+  list-style: none;
+  display: flex; /* Default for desktop */
   align-items: center;
 }
 
-nav .menu {
-  list-style: none;
-  display: flex;
+/* Sembunyikan item close menu di desktop */
+nav .menu .close-menu-item {
+  display: none;
 }
 
 nav .menu li {
@@ -53,13 +73,20 @@ nav .menu li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  padding: 5px 0; /* Tambahkan padding agar area hover lebih nyaman */
+  transition: color 0.3s ease; /* Transisi warna hover */
+}
+
+nav .menu li a:hover {
+  color: #1FA6FF;
 }
 
 nav .hamburger {
-  display: none;
+  display: none; /* Sembunyikan secara default di desktop */
   flex-direction: column;
   cursor: pointer;
   margin-left: 1.5rem;
+  z-index: 1001; /* Pastikan hamburger di atas menu ketika dibuka */
 }
 
 nav .hamburger .bar {
@@ -67,11 +94,25 @@ nav .hamburger .bar {
   height: 3px;
   margin: 4px 0;
   background-color: #fff;
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out; /* Tambahkan transisi untuk bar hamburger */
 }
 
-/* ========== HERO SECTION ========== */
+/* Animasi Hamburger ke X */
+nav .hamburger.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+nav .hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+nav .hamburger.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ========== HERO SECTION (Tambahkan margin-top agar tidak tertutup header fixed) ========== */
 #hero {
+  margin-top: 50px; /* Sesuaikan dengan tinggi header */
   background: url('g1.png') no-repeat center center/cover;
   color: #fff;
   text-align: center;
@@ -101,6 +142,7 @@ nav .hamburger .bar {
   font-size: 1.1rem;
   border-radius: 5px;
   display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
 .cta-btn:hover {
@@ -177,46 +219,108 @@ footer {
   background-color: #03702b;
 }
 
-/* ========== RESPONSIVE HEADER NAV ========== */
+/* ========== RESPONSIVE HEADER NAV (Modifikasi untuk Transisi Smooth & Close Button) ========== */
 @media (max-width: 768px) {
+  /* Sembunyikan menu di desktop dan tampilkan hamburger */
   nav .menu {
-    display: none;
     flex-direction: column;
-    width: 100%;
-    background-color: #333;
-    position: absolute;
-    top: 70px;
-    left: 0;
-  }
-
-  nav .menu.active {
+    width: 250px;
+    /* Ubah background-color agar sedikit transparan atau gunakan warna gelap dengan alpha */
+    background-color: rgba(30, 30, 30, 0.95); /* Warna gelap dengan 95% opacity */
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100%;
+    padding-top: 60px;
+    /* Ubah box-shadow untuk efek transparan shadow */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4); /* Bayangan lebih gelap dan menyebar */
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
     display: flex;
   }
 
+  /* Pastikan menu selalu tersembunyi saat tidak aktif */
+  nav .menu:not(.active) {
+    right: -250px;
+  }
+
+  nav .menu.active {
+    right: 0;
+  }
+
+  /* Tampilkan item close menu di mobile */
+  nav .menu .close-menu-item {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    width: 100%;
+  }
+
+  /* Desain Tombol Close Navbar */
+  .close-navbar {
+    background: #555;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .close-navbar:hover {
+    background: #e74c3c;
+    transform: rotate(90deg);
+  }
+
   nav .menu li {
-    text-align: center;
+    text-align: left;
     margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  nav .menu li:last-child {
+      border-bottom: none;
   }
 
   nav .menu li a {
-    padding: 1rem;
+    padding: 1rem 2rem;
     display: block;
+    color: #fff;
   }
-
+  
+  nav .menu li a:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  /* Hamburger menu tampil di mobile */
   nav .hamburger {
     display: flex;
   }
 
-  nav .hamburger.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  nav .hamburger.active .bar:nth-child(2) {
+  /* Overlay untuk saat menu terbuka */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Sedikit lebih gelap dari sebelumnya, agar shadow lebih terlihat */
+    z-index: 998;
     opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
 
-  nav .hamburger.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(11px, -10px);
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
   }
 
   .wa-float {
@@ -242,11 +346,10 @@ footer {
   overflow: hidden;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  
+  transition: box-shadow 0.3s ease;
 }
 
 .produk-item:hover {
-  
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
@@ -355,6 +458,7 @@ footer {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .modal-content button:hover {
@@ -402,30 +506,47 @@ footer {
   margin-top: 1rem;
   border-radius: 5px;
   text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.detail-button:hover {
+  background: #1ebe5b;
 }
 
 .detail-close {
+  position: fixed;
+  left: 20px;
+  top: 20px;
   border: none;
   padding: 8px 12px;
   font-size: 38px;
   border-radius: 5px;
-  margin-top: 20px;
-  color: #fff;
-}
-
-.detail-close, .close {
-  position: fixed;
-  left: 10;
+  color: #333;
+  background: none;
   cursor: pointer;
-  margin-top: 20px;
-  decoration: none;
+  z-index: 10000;
+  transition: color 0.3s ease;
 }
 
-.detail-close i .close i  {
-  pointer-events: none;
-
-}
-
-.detail-close i:hover{
+.detail-close:hover{
   color: #0FAEF9;
+}
+
+/* Perbaiki posisi dan gaya close button untuk modal umum */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
 }

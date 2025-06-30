@@ -1,0 +1,35 @@
+{
+  "responses": {
+    "home": "Menu Home adalah halaman utama tempat kamu bisa melihat ringkasan tentang website ini.",
+    
+    "kontak": "Di Menu Kontak, kamu bisa menemukan informasi untuk menghubungi admin jika ada pertanyaan.",
+    
+    "admin": "Jika butuh bantuan lebih lanjut, kamu bisa menghubungi admin lewat link tombol di bawah ini ya.", 
+    
+    "fitur": "temukan fitur-fitur lainnya di web ini ya dan juga kamu bisa menggunakan fitur chat bot Ai dengan lebih menarik lagi."
+    
+  
+  },
+  
+  
+  
+  "links": {
+    "email": {
+      "name": "Email",
+      "url": "mailto:mangdev8@gmail.com",
+      "icon": "fas fa-envelope"
+    },
+    "whatsapp": {
+      "name": "WhatsApp",
+      "url": "https://wa.me/6281772857916",
+      "icon": "fab fa-whatsapp"
+    },
+    "github": {
+      "name": "GitHub",
+      "url": "https://github.com/MangDev8",
+      "icon": "fab fa-github"
+    }
+  }
+}
+
+

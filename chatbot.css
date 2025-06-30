@@ -1,0 +1,145 @@
+/* Chatbot Container */ .chatbot-container { position: fixed; bottom: 20px; right: 4%; width: 350px; max-width: 95%; height: 500px; max-height: 90%; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); display: none; flex-direction: column; overflow: hidden; opacity: 0; transform: scale(0.9) translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; color: #fff; z-index: 9999; }
+
+.chatbot-container.show { display: flex; opacity: 1; transform: scale(1) translateY(0); }
+
+.chatbot-container.hide { opacity: 0; transform: scale(1) translateY(20px); }
+
+@media screen and (min-width: 768px) { .chatbot-container { right: 50%; transform: translateX(50%) scale(0.9) translateY(20px); } .chatbot-container.show { transform: translateX(50%) scale(1) translateY(0); } }
+
+/* Chat Header */ .chat-header { display: flex; align-items: center; background: #008080; padding: 10px; color: #eaeaea; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+
+.chat-header img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+
+.chat-header .chat-title { flex-grow: 1; }
+
+.chat-header .close-chat { background: none; border: none; font-size: 20px; color: white; cursor: pointer; }
+
+/* Chat Body */ .chat-body { flex-grow: 1; padding: 10px; overflow-y: auto; background: #f1f1f1; }
+
+/* Chat Message */ .chat-message { max-width: 80%; margin: 8px 0; padding: 10px; border-radius: 8px; font-size: 14px; }
+
+.chat-message.bot { background: #2263A1; align-self: flex-start; }
+
+.chat-message.user { background: #008080; color: #eaeaea; align-self: flex-end; }
+
+/* Chat Footer */ .chat-footer { display: flex; padding: 10px; background: white; border-top: 1px solid #ccc; }
+
+.chat-footer input { flex-grow: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+
+.chat-footer button { background: #008080; border: none; color: #fff; padding: 8px 12px; border-radius: 6px; margin-left: 5px; cursor: pointer; }
+
+/* Chat Toggle Button */ 
+.chat-toggle { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background: #008080; 
+    border: none; 
+    width: 55px; 
+    height: 55px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    font-size: 22px; 
+    color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+    }
+
+.chat-toggle:hover { 
+    background: #006666;
+    }
+
+/* Chat Links */ 
+.chat-links {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 15px; 
+    margin-top: 10px;
+    }
+
+.chat-button { 
+    text-decoration: none; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    font-family: 'Poppins', sans-serif; 
+    
+}
+
+.chat-button i { 
+    font-size: 40px; 
+    padding: 10px; 
+    border-radius: 50%; 
+    width: 50px; 
+    height: 50px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; }
+
+.chat-button span { 
+    font-size: 14px; 
+    font-weight: bold; 
+    margin-top: 5px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    
+}
+
+/* Icon Colors */ 
+.chat-button .fa-envelope { 
+    background: #D44638; 
+    color: white;
+}
+
+.chat-button .fa-whatsapp { 
+    background: #25D366; 
+    color: white; 
+}
+
+.chat-button .fa-github { 
+    background: #171515; color: white; 
+}
+
+/* Chat Suggestions */ 
+.chat-suggestions {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: center; 
+    padding: 10px; 
+    border-top: 1px solid #ddd; 
+    background: #f9f9f9; 
+    animation: fadeInUp 0.5s ease-in-out; }
+
+.suggestion { 
+    background: #007bff;
+    color: white; 
+    padding: 8px 12px; 
+    border-radius: 20px; 
+    font-size: 14px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    user-select: none; }
+
+.suggestion:hover {
+    background: #0056b3;
+    }
+
+/* Animations */ 
+@keyframes fadeIn { 
+from { opacity: 0; 
+transform: scale(0.9);
+} to { opacity: 1;
+transform: scale(1); }
+}
+
+@keyframes fadeInUp 
+{ from { transform: translateY(20px);
+opacity: 0; } to { transform: translateY(0); 
+opacity: 1; }
+}
+

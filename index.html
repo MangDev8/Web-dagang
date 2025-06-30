@@ -6,22 +6,23 @@
   <title>Warung Tuak</title>
   <link rel="icon" href="g1.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="stylesheet" href="chatbot.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container">
-      <h1>Warung Tuak</h1>
-      <nav>
-        <ul class="menu">
+      <h1><a href="#" class="logo">Warung Tuak</a></h1> <nav>
+        <ul class="menu" id="mainMenu"> <li class="close-menu-item"> <button class="close-navbar" id="closeNavbar">
+                  &times; </button>
+          </li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#produk">Produk</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
-        <div class="hamburger" onclick="toggleMenu()">
-          <span class="bar"></span>
+        <div class="hamburger" id="hamburger"> <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
@@ -29,16 +30,52 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="hero">
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div> <section id="hero">
     <div class="hero-content">
       <h2>Selamat Datang di Warung Tuak</h2>
       <p>Menikmati minuman dengan santai dan juga bijak.</p>
       <a href="#produk-shopee" class="cta-btn">Lihat Produk</a>
     </div>
   </section>
+    <div class="menu-section">
+        <div class="menu-item">
+            <a href="fitur menu/blog.html">
+                <i class="fas fa-blog fa-2x"></i>
+                <p>Artikel & Blog</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="fitur menu/file.html">
+                <i class="fas fa-folder-open fa-2x"></i>
+                <p>File</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="fitur menu/file.html?filter=video">
+                <i class="fas fa-video fa-2x"></i>
+                <p>Video</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="fitur menu/file.html?filter=audio">
+                <i class="fas fa-music fa-2x"></i>
+                <p>Lagu</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#projeck">
+                <i class="fas fa-tv fa-2x"></i>
+                <p>Projeck</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="premium.html">
+                <i class="fas fa-code fa-2x"></i>
+                <p>Skills</p>
+            </a>
+        </div>
+    </div>
 
-  <!-- Produk Shopee Style -->
   <div class="produk1">
     <h2>Produk Unggul</h2>
   </div>
@@ -154,11 +191,9 @@
    </div>
  </div>
   </section>
-  <!-- Modal Detail Produk Fullscreen -->
   <div id="detailProdukPage" class="detail-produk">
     <div class="detail-container">
-      <!-- Tombol close -->
-     <div class="detail-close" onclick="tutupDetailProduk()">
+      <div class="detail-close" onclick="tutupDetailProduk()">
   <i class="fas fa-arrow-left"></i>
 </div>
 
@@ -175,7 +210,6 @@
     </div>
   </div>
 
-  <!-- Modal Form Pemesanan -->
   <div id="modalForm" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeForm()">&times;</span>
@@ -196,7 +230,6 @@
     </div>
   </div>
 
-  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>Tentang Kami</h2>
@@ -204,7 +237,6 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2>Kontak Kami</h2>
@@ -214,20 +246,46 @@
     </div>
   </section>
 
-  <!-- WhatsApp Floating -->
-  <a href="https://wa.me/6281772857916" target="_blank" class="wa-float">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Warung Tuak dan Kopi. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JavaScript -->
+
+
+
+
+
+    <div class="chatbot-container">
+        <div class="chat-header">
+            <img src="g1.png" alt="Avatar">
+            <div class="chat-title">
+                <h3>MangDev AI</h3>
+                <p>Asisten Interaktif</p>
+            </div>
+            <button class="close-chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="chat-message bot">
+                <p>Halo! Ada yang bisa saya bantu?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Tulis pesan...">
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="chat-links" id="chatLinks"></div>
+        <div id="chat-suggestions" class="chat-suggestions"></div>
+    </div>
+
+    <button class="chat-toggle" id="chat-toggle">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+
   <script src="script.js"></script>
+  <script src="chatbot.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
     new Swiper(".swiper-container", {
